@@ -1,0 +1,8 @@
+{
+    "private": true,
+    "scripts": {
+        "preinstall": "npm i docsify-cli -g",
+        "start": "docsify serve docs"
+    },
+    "author": "Roman Jámbor"
+}
