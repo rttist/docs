@@ -1,7 +1,5 @@
 [![tst-reflect](https://img.shields.io/npm/v/rttist.svg?color=brightgreen&style=flat-square&logo=npm&label=rttist)](https://www.npmjs.com/package/rttist)
-[![License MIT](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)](https://opensource.org/licenses/MIT)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+[![License MIT](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)](https://opensource.org/licenses/MIT)
 
 <!-- ![Code coverage](docs/_images/coverage-badge.svg) -->
 
@@ -49,7 +47,7 @@ interface Employee {
     sayHello(toSomebody: string);
 }
 
-const type: Type = getType&lt;Employee>();
+const type: Type = getType<Employee>();
 
 if (type.isInterface()) {
     const properties = type.getProperties().map((prop: PropertyInfo) => prop.name);
