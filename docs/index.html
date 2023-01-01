@@ -9,16 +9,13 @@
 		<meta name="keywords" content="reflection, runtime, type, information, system, typescript, reflect, rttist">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-<!--		<link rel="stylesheet" href="/_styles/prism-one-dark.css">-->
+		<!--		<link rel="stylesheet" href="/_styles/prism-one-dark.css">-->
 		<link rel="stylesheet" href="/_styles/prism-one-light.css">
-<!--		<link rel="stylesheet" href="/_styles/prism-vs-light.css">-->
-<!--		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs@1/themes/prism.css">-->
+		<!--		<link rel="stylesheet" href="/_styles/prism-vs-light.css">-->
+		<!--		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs@1/themes/prism.css">-->
 		<style rel="stylesheet">
-			/*.app-name a img {*/
-			/*	max-width: 80%;*/
-			/*}*/
+
 			:root {
-				/*--theme-color: #6b65a0;*/
 				--theme-color: #4caca4;
 			}
 
@@ -27,89 +24,270 @@
 				border: 1px solid #eee;
 				font-weight: normal;
 			}
-			
+
 			.markdown-section pre {
 				padding: 0;
 			}
 
 			.markdown-section pre code {
 				padding: 0 1.4rem;
-				/*color: #4caca4;*/
-				/*border: 1px solid #eee;*/
+			}
+
+			.docsify-pagination-container {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				overflow: hidden;
+				margin: 5em 0 1em;
+				border-top: 1px solid rgba(0, 0, 0, .07)
+			}
+
+			.pagination-item {
+				margin-top: 2.5em
+			}
+
+			.pagination-item a, .pagination-item a:hover {
+				text-decoration: none
+			}
+
+			.pagination-item a {
+				color: currentColor
+			}
+
+			.pagination-item a:hover .pagination-item-title {
+				text-decoration: underline
+			}
+
+			.pagination-item:not(:last-child) a .pagination-item-label, .pagination-item:not(:last-child) a .pagination-item-subtitle, .pagination-item:not(:last-child) a .pagination-item-title {
+				opacity: .3;
+				transition: all .2s
+			}
+
+			.pagination-item:last-child .pagination-item-label, .pagination-item:not(:last-child) a:hover .pagination-item-label {
+				opacity: .6
+			}
+
+			.pagination-item:not(:last-child) a:hover .pagination-item-title {
+				opacity: 1
+			}
+
+			.pagination-item-label {
+				font-size: .8em
+			}
+
+			.pagination-item-label > * {
+				line-height: 1;
+				vertical-align: middle
+			}
+
+			.pagination-item-label svg {
+				height: .8em;
+				width: auto;
+				stroke: currentColor;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				stroke-width: 1px
+			}
+
+			.pagination-item--next {
+				margin-left: auto;
+				text-align: right
+			}
+
+			.pagination-item--next svg {
+				margin-left: .5em
+			}
+
+			.pagination-item--previous svg {
+				margin-right: .5em
+			}
+
+			.pagination-item-title {
+				font-size: 1.6em
+			}
+
+			.pagination-item-subtitle {
+				text-transform: uppercase;
+				opacity: .3
 			}
 		</style>
 	</head>
 	<body>
 		<div id="app">Loading ...</div>
 		<script>
-			var lang = location.hash.match(/#\/(en|cz)\//);
+            const NavigationData = {
+                prev: undefined,
+                next: undefined
+            };
 
-			if (lang) {
-				document.documentElement.setAttribute('lang', lang[1]);
-			}
+            function paginationPlugin(hook, vm) {
+                let main = undefined;
+                let nav = undefined;
 
-			window.$docsify = {
-				name: "RTTIST",
-				logo: '/_images/logo-with-name.png',
-				repo: "https://github.com/rttist/rttist",
-				homepage: "/en/README.md",
+                function getContainer() {
+                    if (!main) {
+                        return;
+                    }
 
-				relativePath: true,
+                    let container = main.querySelector(".docsify-pagination-container");
 
-				loadSidebar: true,
-				// loadSidebar: "_sidebar.md",
-				subMaxMenu: 2,
+                    if (!container) {
+                        container = document.createElement("div");
+                        container.classList.add("docsify-pagination-container");
+                        main.append(container);
+                    }
 
-				loadNavbar: true,
-				// loadNavbar: "_navbar.md",
+                    return container;
+                }
 
-				alias: {
-					"/.*/_navbar.md": "/_navbar.md",
-					"/en/.*_sidebar.md": "/_sidebar.md",
-					// "/(.*)/.*_sidebar.md": "/$1/_sidebar.md",
-					// "/(.*)/_sidebar.md": "/$1/_sidebar.md",
-					// "/cz/(.*)": "/cz/$1",
-					// "/de/(.*)": "/de/$1",
-				},
-				nameLink: {
-					"/cz/": "#/cz/",
-					"/de/": "#/de/",
-					"/": "#/",
-				},
-				search: {
-					noData: {
-						"/cz/": "¡Žádné výsledky!",
-						"/de/": "Keine Ergebnisse!",
-						"/": "No results!",
-					},
-					paths: "auto",
-					placeholder: {
-						"/cz/": "Hledat",
-						"/de/": "Suche",
-						"/": "Search",
-					},
-					pathNamespaces: ["/cz", "/de"],
-				},
-				namespaces: [
-					{
-						id: "lang",
-						values: ["en", "cz", "de"],
-						optional: true,
-						selector: "#lang-selector",
-					},
-					{
-						id: "version",
-						values: ["v1-0"],
-						optional: true,
-						selector: "#version-selector",
-					},
-				],
-			};
+                function html(html) {
+                    const el = document.createElement("div");
+                    el.innerHTML = html;
+                    return Array.prototype.slice.call(el.children);
+                }
+
+                function renderPagination() {
+                    const container = getContainer();
+                    
+                    if (!container) {
+                        return;
+					}
+
+                    const navItems = Array.prototype.slice.call(nav.querySelectorAll("a"));
+
+                    if (NavigationData.prev) {
+                        const navItem = navItems.find(a => a.href.includes(NavigationData.prev));
+						
+                        if (navItem) {
+                            container.append(...html(`
+								<div class="pagination-item pagination-item--previous">
+									<a href="${navItem.href}">
+										<div class="pagination-item-label">
+											<svg width="10" height="16" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+												<polyline fill="none" vector-effect="non-scaling-stroke" points="8,2 2,8 8,14"></polyline>
+											</svg>
+											<span>PREVIOUS</span>
+										</div>
+										<div class="pagination-item-title">${navItem.innerHTML}</div>
+									</a>
+								</div>
+							`));
+                        }
+                    }
+
+                    if (NavigationData.next) {
+                        const navItem = navItems.find(a => a.href.includes(NavigationData.next));
+
+                        if (navItem) {
+                            container.append(...html(`
+								<div class="pagination-item pagination-item--next">
+									<a href="${navItem.href}">
+										<div class="pagination-item-label">
+											<span>NEXT</span>
+											<svg width="10" height="16" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+												<polyline fill="none" vector-effect="non-scaling-stroke" points="2,2 8,8 2,14"></polyline>
+											</svg>
+										</div>
+										<div class="pagination-item-title">${navItem.innerHTML}</div>
+									</a>
+								</div>
+							`));
+                        }
+                    }
+                }
+
+                hook.ready(() => {
+                    main = document.querySelector("#main");
+                    nav = document.querySelector("main > aside > div.sidebar-nav");
+                    renderPagination();
+                });
+
+                hook.afterEach(() => {
+                    NavigationData.prev = undefined;
+                    NavigationData.next = undefined;
+                });
+
+                hook.doneEach(() => {
+                    renderPagination();
+                });
+            }
+
+            function setPagination(prev, next) {
+				NavigationData.prev = prev;
+				NavigationData.next = next;
+            }
+
+            const lang = location.hash.match(/#\/(en|cz)\//);
+
+            if (lang) {
+                document.documentElement.setAttribute('lang', lang[1]);
+            }
+
+            window.$docsify = {
+                name: "RTTIST",
+                logo: '/_images/logo-with-name.png',
+                repo: "https://github.com/rttist/rttist",
+                homepage: "/en/README.md",
+
+                executeScript: true,
+
+                loadSidebar: true,
+                // loadSidebar: "_sidebar.md",
+                subMaxMenu: 2,
+
+                relativePath: true,
+                loadNavbar: true,
+                // loadNavbar: "_navbar.md",
+
+                alias: {
+                    "/.*/_navbar.md": "/_navbar.md",
+                    "/en/.*_sidebar.md": "/_sidebar.md",
+                    // "/(.*)/.*_sidebar.md": "/$1/_sidebar.md",
+                    // "/(.*)/_sidebar.md": "/$1/_sidebar.md",
+                    // "/cz/(.*)": "/cz/$1",
+                    // "/de/(.*)": "/de/$1",
+                },
+                nameLink: {
+                    "/cz/": "#/cz/",
+                    "/de/": "#/de/",
+                    "/": "#/",
+                },
+                search: {
+                    noData: {
+                        "/cz/": "¡Žádné výsledky!",
+                        "/de/": "Keine Ergebnisse!",
+                        "/": "No results!",
+                    },
+                    paths: "auto",
+                    placeholder: {
+                        "/cz/": "Hledat",
+                        "/de/": "Suche",
+                        "/": "Search",
+                    },
+                    pathNamespaces: ["/cz", "/de"],
+                },
+                namespaces: [
+                    {
+                        id: "lang",
+                        values: ["en", "cz", "de"],
+                        optional: true,
+                        selector: "#lang-selector",
+                    },
+                    {
+                        id: "version",
+                        values: ["v1-0"],
+                        optional: true,
+                        selector: "#version-selector",
+                    },
+                ],
+                plugins: [
+                    paginationPlugin
+                ]
+            };
 		</script>
 		<!-- Docsify v4 -->
 		<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 		<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-		<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 	</body>
 </html>

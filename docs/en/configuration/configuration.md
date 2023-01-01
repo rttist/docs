@@ -9,7 +9,7 @@ There are three ways how to configure **RTTIST**.
     ```json
     {
         "metadata": {
-            "encode": true
+            "encode": false
         },
         "logLevel": "Warning"
     }
@@ -18,7 +18,7 @@ There are three ways how to configure **RTTIST**.
     ```javascript
     module.exports.default = {
         metadata: {
-            encode: true
+            encode: false
         },
         logLevel: "Warning"
     };
@@ -34,7 +34,7 @@ There are three ways how to configure **RTTIST**.
                     // configuration in "reflection" property
                     "reflection": {
                         "metadata": {
-                            "encode": true
+                            "encode": false
                         },
                         "logLevel": "Warning"
                     }
@@ -56,10 +56,11 @@ Path (fileName) of metadata type library relative to ourDir. Metadata type libra
 This option has default value `metadata.typelib.js`, which will generate file of given name in the root of the outDir.
 
 ### metadata.encode
-This option allows you to enable base32768 UTF-16 encoding, which will reduce size of the generated metadata type library by about 75%.
+This option allows you to enable/disable base32768 UTF-16 encoding, which will reduce size of the generated metadata type library by about 75&nbsp;%.
 Encoded metadata are not human readable. 
-It's recommended to enable this option for production. 
-Disabled by default because of Alpha version; allowing you to check generated metadata and create an issue in case you find a bug.
+This option is enabled by default and it is recommended to keep it enabled for production. 
+
+It's recommended to disable this feature for debugging; allowing you to check generated metadata and create an issue in case you find a bug.
 
 ### plugins
 List of plugins (path or package name). Allows you to hook up into the transpilation process, do some tweak, change metadata and so on.

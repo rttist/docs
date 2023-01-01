@@ -1,3 +1,10 @@
+<script>
+setPagination(
+    "/en/getting-started/installation",
+    "/en/usage/how-to-access-type?id=how-to-get-a-type"
+);
+</script>
+
 # Setup
 After [Installation](/en/getting-started/installation.md) you just have to import `rttist`; 
 ideally as first import in your main module. This first import loads the generated metadata.

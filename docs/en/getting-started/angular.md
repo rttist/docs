@@ -1,3 +1,10 @@
+<script>
+setPagination(
+    "/en/getting-started/installation",
+    "/en/getting-started/setup"
+);
+</script>
+
 # Usage With Angular
 > Because Angular CLI does not support custom TypeScript transformers/plugins (there is still an open [feature request](https://github.com/angular/angular/issues/22434), more than 4 years), custom transformers must be configured manually by tampering with the Webpack configuration file.
 

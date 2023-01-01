@@ -1,3 +1,10 @@
+<script>
+setPagination(
+    "/en/getting-started/installation",
+    "/en/getting-started/setup"
+);
+</script>
+
 # Usage With Webpack
 
 > If you use Angular or something else which has webpack encapsulated and under its own control, 

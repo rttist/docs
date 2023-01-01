@@ -1,3 +1,10 @@
+<script>
+setPagination(
+    "/en/getting-started/installation",
+    "/en/getting-started/setup"
+);
+</script>
+
 # Usage With Deno
 
 > Because current version of Deno is based on SWC (Rust), not TypeScript, there is currently no direct way to use **RTTIST**. You have to transpile TS to JS eg. via `ttypescript` and then you can run transpiled JS by `deno`.

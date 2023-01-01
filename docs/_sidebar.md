@@ -12,7 +12,7 @@
   - [Setup](/en/getting-started/setup.md)
 [//]: # (- [Usage]&#40;/en/usage/usage.md&#41;)
 - Usage
-  - [How to access a Type](/en/usage/how-to-access-type.md?id=how-to-get-a-type)
+  - [How to Access a Type](/en/usage/how-to-access-type.md?id=how-to-get-a-type)
 - Configuration
   - [Config File(s)](/en/configuration/configuration?id=config-files)
   - [Config Options](/en/configuration/configuration?id=config-options)

@@ -1,3 +1,10 @@
+<script>
+setPagination(
+    undefined,
+    "/en/getting-started/installation"
+);
+</script>
+
 [![tst-reflect](https://img.shields.io/npm/v/rttist.svg?color=brightgreen&style=flat-square&logo=npm&label=rttist)](https://www.npmjs.com/package/rttist)
 [![License MIT](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)](https://opensource.org/licenses/MIT)
 
