@@ -8,9 +8,8 @@
 
 > Advanced TypeScript runtime reflection system, inspired by the C#'s reflection.
 
-<br>
 
-<img src="/_images/logo-mark.png" alt="Reflect" align="left" style="padding: 0 2em 2em 0">
+<img src="/_images/logo-mark.png" alt="Reflect" align="left" style="padding: 2em 2em 2em 0;">
 
 
 ## About

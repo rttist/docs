@@ -1,16 +1,20 @@
 - [Home](/)
   - [About](/README.md?id=about)
-  - [Alpha](/README.md?id=alpha)
-  - [License](/README.md?id=license)
-- [Usage](/en/usage.md)
-  - [How to get a Type](/en/usage.md?id=how-to-get-a-type)
-- [Getting started](/en/getting-started.md)
-  - Installation
-    - [Using Vanilla TypeScript](/en/usage/vanilla-ts.md)
-    - [Using Webpack](/en/usage/webpack.md)
-    - [Using Angular](/en/usage/angular.md)
-    - [Using Parcel](/en/usage/parcel.md)
-    - [Using Rollup](/en/usage/rollup.md)
-    - [Using ts-node](/en/usage/ts-node.md)
+  - [Alpha Version](/README.md?id=alpha)
+- Getting started
+  - [Installation](/en/getting-started/installation.md)
+    - [Using Vanilla TypeScript](/en/getting-started/vanilla-ts.md)
+    - [Using Webpack](/en/getting-started/webpack.md)
+    - [Using Angular](/en/getting-started/angular.md)
+    - [Using Parcel](/en/getting-started/parcel.md)
+    - [Using Rollup](/en/getting-started/rollup.md)
+    - [Using ts-node](/en/getting-started/ts-node.md)
+  - [Setup](/en/getting-started/setup.md)
+[//]: # (- [Usage]&#40;/en/usage/usage.md&#41;)
+- Usage
+  - [How to access a Type](/en/usage/how-to-access-type.md?id=how-to-get-a-type)
 - Configuration
+  - [Config File(s)](/en/configuration/configuration?id=config-files)
+  - [Config Options](/en/configuration/configuration?id=config-options)
+  - [Config Declaration](/en/configuration/configuration?id=config-declaration)
 - Examples
