@@ -10,7 +10,6 @@
     - [Using Rollup](/en/getting-started/rollup.md)
     - [Using ts-node](/en/getting-started/ts-node.md)
   - [Setup](/en/getting-started/setup.md)
-[//]: # (- [Usage]&#40;/en/usage/usage.md&#41;)
 - Usage
   - [How to Access a Type](/en/usage/how-to-access-type.md?id=how-to-get-a-type)
   - [Generic Classes](/en/usage/generic-classes.md?id=generic-classes)
