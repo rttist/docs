@@ -1,5 +1,5 @@
 # Installation
-> **RTTIST** is just a runtime library, meant to be de-facto standard. It has no own transformer that generate type information metadata. 
+> **RTTIST** is just a runtime library meant to be de-facto standard. It has no own transformer that generate type information metadata. 
 > It just define format for metadata. It is implemented by different packages based on different technologies.
 > Currently, there is TypeScript based implementation [tst-reflect](https://github.com/Hookyns/tst-reflect). 
 > Universal (WASM, SWC based) implementation is in progress, planned for 2024.
@@ -15,3 +15,6 @@ Based on your stack, pick one of these options to continue.
 - [Using Deno](/en/getting-started/deno.md)
 
 then continue by [Setup](/en/getting-started/setup.md).
+
+## Alpha Version Notice
+> When installing `rttist` and `tst-reflect-transformer`, use `@alpha` tag, eg. `npm i rttist@alpha`.

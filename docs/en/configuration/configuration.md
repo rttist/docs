@@ -14,7 +14,11 @@ There are three ways how to configure **RTTIST**.
         "logLevel": "Warning"
     }
     ```
-2. or create file `reflect.config.js` with `default` export. Exported value can be config object directly or Promise resolved to config object.
+2. or create file `reflect.config.js` with `default` export. 
+    Exported value can be config object directly or Promise resolved to config object.
+   
+    > To use async config (JS config exporting Promise) you have to install package `deasync`, because TS compiler does not allow async operations.
+   
     ```javascript
     module.exports.default = {
         metadata: {

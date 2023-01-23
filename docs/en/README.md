@@ -35,7 +35,7 @@ For more information check our website [rttist.org](https://rttist.org) or docs 
 
 ## Alpha
 This project is currently in alpha phase.
-There still may be some major changes, but no changes are expected.
+There still may be some major changes, but no such changes are expected.
 
 If you participate in Alpha, you can use our [discord](https://discord.gg/74qn6KPAUP).
 
@@ -74,6 +74,76 @@ if (type.isInterface()) {
     console.log(signatures); // > [ sayHello(), sayHello(toSomebody: string) ]
 }
 ```
+
+## Performance & Compatibility
+**Performance**
+
+Because of generic type parameters, the source code is modified. 
+Several function calls and variable declarations are added to the source code which will make your program a little slower.
+
+**Compatibility**
+
+> This package introduces real generic classes, so for example class `Logger` is not the same class as `Logger<User>`!
+> 
+> `Logger<User>` is subclass of `Logger`.
+
+To fully support **generic class** type parameters, all generic classes are wrapped by our classes which change default behavior a little.
+If you use `instanceof` operator, there will be no problem. 
+If you access constructors of class instances from their prototype, you'll get different constructor than you expect.
+
+Each specific generic class is a subclass of your generic class declaration.
+
+Lets have any generic class.
+```typescript
+export class Logger<TContext> {
+	
+}
+```
+
+If you use this class like this:
+```typescript
+const logger = new Logger<User>();
+```
+new class `Logger<User>` will be created and instantiated at runtime instead of base `Logger` class. 
+It's the same behavior as C#, Java and other languages have (they just generate those classes at compile time).
+
+
+```typescript
+class Logger<TContext> // This is a declaration of generic type
+{
+	log(...args: any[])
+	{
+		console.log(...args);
+	}
+}
+
+const logger = new Logger<User>(); // Logger<User> is generic class, inheriting from Logger<T> declaration
+
+// This will not work as expected
+if (Object.getPrototypeOf(logger).constructor === Logger) // false
+{
+	// ...
+}
+
+// This is OK
+if (logger instanceof Logger) // true
+{
+	// ...
+}
+
+const userLoggerType: Type = getType<Logger<User>>();
+const loggerType: Type = getType(Logger);
+
+if (userLoggerType.isClass() && userLoggerType.isSubclassOf(loggerType)
+	&& userLoggerType.isGenericType()
+	&& userLoggerType.genericTypeDefinition.is(loggerType)
+	&& userLoggerType.genericTypeDefinition.isGenericType()
+	&& userLoggerType.genericTypeDefinition.isGenericTypeDefinition()) // true
+{
+	// ...
+}
+```
+
 
 ## License
 This project is licensed under the [MIT license](./LICENSE).
