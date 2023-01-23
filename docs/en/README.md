@@ -144,6 +144,7 @@ if (userLoggerType.isClass() && userLoggerType.isSubclassOf(loggerType)
 }
 ```
 
+In case this is a problem for you, let us know in [this issue](https://github.com/rttist/rttist/issues/8).
 
 ## License
 This project is licensed under the [MIT license](./LICENSE).
