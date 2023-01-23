@@ -52,8 +52,12 @@ There are three ways how to configure **RTTIST**.
 ### metadata.include
 List of glob patterns matching modules which should be included in metadata.
 
+Default pattern `**/*`.
+
 ### metadata.exclude
 List of glob patterns matching modules which should be excluded from metadata. Overrides `metadata.include`.
+
+Default pattern `**/@types/node/**`.
 
 ### metadata.metadataTypelibPath
 Path (fileName) of metadata type library relative to ourDir. Metadata type library file is file, where all the type information is stored.
