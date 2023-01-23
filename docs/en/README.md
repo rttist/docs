@@ -37,7 +37,7 @@ For more information check our website [rttist.org](https://rttist.org) or docs 
 This project is currently in alpha phase.
 There still may be some major changes, but no such changes are expected.
 
-If you participate in Alpha, you can use our [discord](https://discord.gg/74qn6KPAUP).
+If you participate in Alpha, use our discord mentioned in the [github.com/rttist/rttist](https://github.com/rttist/rttist) README.
 
 
 ## Showcase
