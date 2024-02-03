@@ -22,7 +22,6 @@
   - [Generic Functions](/en/usage/generic-functions.md?id=generic-functions)
   - [Decorators](/en/usage/decorators.md?id=decorators)
 - Configuration
-  - [Config File(s)](/en/configuration/configuration?id=config-files)
   - [Config Options](/en/configuration/configuration?id=config-options)
   - [Config Declaration](/en/configuration/configuration?id=config-declaration)
 - Authoring libraries
