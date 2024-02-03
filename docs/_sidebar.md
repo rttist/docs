@@ -1,16 +1,22 @@
-- [Home](/)
-  - [About](/README.md?id=about)
-  - [Alpha Version](/README.md?id=alpha)
+- Docs
+  - [Introduction](/)
+  - [Quick Start](/en/quick-start.md)
 - Getting started
   - [Installation](/en/getting-started/installation.md)
-    - [Using Vanilla TypeScript](/en/getting-started/vanilla-ts.md)
-    - [Using Webpack](/en/getting-started/webpack.md)
-    - [Using Angular](/en/getting-started/angular.md)
-    - [Using Parcel](/en/getting-started/parcel.md)
-    - [Using Rollup](/en/getting-started/rollup.md)
-    - [Using ts-node](/en/getting-started/ts-node.md)
+  - [Transformers](/en/transformers/transformers.md)
+    - [esbuild](/en/transformers/esbuild.md)
+    - [Vite](/en/transformers/vite.md)
+    - [SWC](/en/transformers/swc.md)
+    - [TypeScript](/en/transformers/vanilla-ts.md)
+    - [Webpack](/en/transformers/webpack.md)
+    - [Angular](/en/transformers/angular.md)
+    - [Parcel](/en/transformers/parcel.md)
+    - [Rollup](/en/transformers/rollup.md)
+    - [ts-node](/en/transformers/ts-node.md)
+    - [Deno](/en/transformers/deno.md)
   - [Setup](/en/getting-started/setup.md)
 - Usage
+  - [Static Metadata](/en/usage/static-metadata.md?id=static-metadata)
   - [How to Access a Type](/en/usage/how-to-access-type.md?id=how-to-get-a-type)
   - [Generic Classes](/en/usage/generic-classes.md?id=generic-classes)
   - [Generic Functions](/en/usage/generic-functions.md?id=generic-functions)
@@ -19,4 +25,6 @@
   - [Config File(s)](/en/configuration/configuration?id=config-files)
   - [Config Options](/en/configuration/configuration?id=config-options)
   - [Config Declaration](/en/configuration/configuration?id=config-declaration)
+- Authoring libraries
+  - [Configuration](/en/authoring/configuration?id=configuration)
 - Examples

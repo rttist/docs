@@ -6,37 +6,97 @@ setPagination(
 </script>
 
 # Setup
-After [Installation](/en/getting-started/installation.md) you just have to import `rttist`; 
-ideally as first import in your main module. This first import loads the generated metadata.
 
+Use the installed [TypeGen](/en/typegen.md) cmd tool to initialize the RTTIST inside a project.
 
-```typescript
-import "rttist";
-import { Employee } from "./entities/Employee"
-// ...
-
-const type: Type = Reflect.getType<Employee>();
-// ...
+```bash
+rttist init
+# or
+typegen init
+# or
+npx rttist init
+# or
+pnpm exec rttist init
 ```
 
-or
-
-```typescript
-import "rttist";
-import { Employee } from "./entities/Employee"
-// ...
-
-const type: Type = Rttist.getType<Employee>();
-// ...
+Example output:
+```bash
+❯ npx rttist init
+✓ Config file created.
+? Is this project intended to be a library? (It will add a reflection section to package.json) Yes
+✓ Package json file patched.
+✓ Done
+Continue by running:  rttist generate
 ```
 
-or
+This will create a `reflect.config.json` file and add a `reflection` section to the `package.json` file (optional).
 
-```typescript
-import { getType } from "rttist";
-import { Employee } from "./entities/Employee"
-// ...
+Continue by running the `rttist generate` command.
 
-const type: Type = getType<Employee>();
-// ...
+```bash
+rttist generate
 ```
+
+This will generate a `metadata.typelib.ts` file in the project root directory. 
+This file now becomes part of the project and should be committed to the repository.
+
+
+
+[//]: # (After [Installation]&#40;/en/getting-started/installation.md&#41; you just have to import `rttist`; )
+
+[//]: # (ideally as first import in your main module. This first import loads the generated metadata.)
+
+[//]: # ()
+[//]: # ()
+[//]: # (```typescript)
+
+[//]: # (import "rttist";)
+
+[//]: # (import { Employee } from "./entities/Employee")
+
+[//]: # (// ...)
+
+[//]: # ()
+[//]: # (const type: Type = Reflect.getType<Employee>&#40;&#41;;)
+
+[//]: # (// ...)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (or)
+
+[//]: # ()
+[//]: # (```typescript)
+
+[//]: # (import "rttist";)
+
+[//]: # (import { Employee } from "./entities/Employee")
+
+[//]: # (// ...)
+
+[//]: # ()
+[//]: # (const type: Type = Rttist.getType<Employee>&#40;&#41;;)
+
+[//]: # (// ...)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (or)
+
+[//]: # ()
+[//]: # (```typescript)
+
+[//]: # (import { getType } from "rttist";)
+
+[//]: # (import { Employee } from "./entities/Employee")
+
+[//]: # (// ...)
+
+[//]: # ()
+[//]: # (const type: Type = getType<Employee>&#40;&#41;;)
+
+[//]: # (// ...)
+
+[//]: # (```)

@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="/_styles/prism-one-light.css">
 		<!--		<link rel="stylesheet" href="/_styles/prism-vs-light.css">-->
 		<!--		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs@1/themes/prism.css">-->
+		<link rel="stylesheet" href="/_styles/docsify-plugin-toc_light.css">
 		<style rel="stylesheet">
 
 			:root {
@@ -23,6 +24,10 @@
 				color: #4caca4;
 				border: 1px solid #eee;
 				font-weight: normal;
+			}
+
+			.markdown-section h1 {
+				font-size: 2.4rem;
 			}
 
 			.markdown-section pre {
@@ -124,6 +129,247 @@
 			.pagination-item-subtitle {
 				text-transform: uppercase;
 				opacity: .3
+			}
+		</style>
+
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Source+Code+Pro:wght@400&family=Inter:wght@100;300;500&display=swap");
+
+			pre code[class*=lang-] {
+				font-size: 0.9rem;
+				line-height: 1.4em;
+				font-family: "Source Code Pro", Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;
+				font-weight: 400;
+				color: #ddd;
+				text-shadow: none;
+				direction: ltr;
+				text-align: left;
+				white-space: pre;
+				word-spacing: normal;
+				word-break: normal;
+				hyphens: none;
+				tab-size: 4;
+				background: #181c36;
+				padding: 1.4em;
+				border-radius: 8px;
+			}
+
+			pre {
+				background: none;
+			}
+
+			pre code[class*=lang-]::selection, pre code[class*=lang-] *::selection {
+				text-shadow: none;
+				background: #264F78;
+			}
+
+			.namespace {
+				opacity: 0.7;
+			}
+
+			.token.doctype .token.doctype-tag {
+				color: #7bb3eb;
+			}
+
+			.token.doctype .token.name {
+				color: #9cdcfe;
+			}
+
+			.token.comment,
+			.token.prolog {
+				color: #6a9955;
+			}
+
+			.token.punctuation,
+			.language-html .language-css .token.punctuation,
+			.language-html .language-javascript .token.punctuation {
+				color: #d4d4d4;
+			}
+
+			.token.property,
+			.token.tag,
+			.token.boolean,
+			.token.number,
+			.token.constant,
+			.token.symbol,
+			.token.inserted,
+			.token.unit {
+				color: #b5cea8;
+			}
+
+			.token.selector,
+			.token.attr-name,
+			.token.string,
+			.token.char,
+			.token.builtin,
+			.token.deleted {
+				color: #dfa289;
+			}
+
+			.language-css .token.string.url {
+				text-decoration: underline;
+			}
+
+			.token.operator,
+			.token.entity {
+				color: #d4d4d4;
+			}
+
+			.token.operator.arrow {
+				color: #7bb3eb;
+			}
+
+			.token.atrule {
+				color: #ce9178;
+			}
+
+			.token.atrule .token.rule {
+				color: #c586c0;
+			}
+
+			.token.atrule .token.url {
+				color: #9cdcfe;
+			}
+
+			.token.atrule .token.url .token.function {
+				color: #dcdcaa;
+			}
+
+			.token.atrule .token.url .token.punctuation {
+				color: #d4d4d4;
+			}
+
+			.token.keyword {
+				color: #7bb3eb;
+			}
+
+			.token.keyword.module,
+			.token.keyword.control-flow {
+				color: #c586c0;
+			}
+
+			.token.function,
+			.token.function .token.maybe-class-name {
+				color: #dcdcaa;
+			}
+
+			.token.regex {
+				color: #d16969;
+			}
+
+			.token.important {
+				color: #7bb3eb;
+			}
+
+			.token.italic {
+				font-style: italic;
+			}
+
+			.token.constant {
+				color: #9cdcfe;
+			}
+
+			.token.class-name,
+			.token.maybe-class-name {
+				color: #4ec9b0;
+			}
+
+			.token.console {
+				color: #9cdcfe;
+			}
+
+			.token.parameter {
+				color: #9cdcfe;
+			}
+
+			.token.interpolation {
+				color: #9cdcfe;
+			}
+
+			.token.punctuation.interpolation-punctuation {
+				color: #7bb3eb;
+			}
+
+			.token.boolean {
+				color: #7bb3eb;
+			}
+
+			.token.property,
+			.token.variable,
+			.token.imports .token.maybe-class-name,
+			.token.exports .token.maybe-class-name {
+				color: #9cdcfe;
+			}
+
+			.token.selector {
+				color: #d7ba7d;
+			}
+
+			.token.escape {
+				color: #d7ba7d;
+			}
+
+			.token.tag {
+				color: #7bb3eb;
+				/*color: #569cd6;*/
+			}
+
+			.token.tag .token.punctuation {
+				color: #808080;
+			}
+
+			.token.cdata {
+				color: #808080;
+			}
+
+			.token.attr-name {
+				color: #9cdcfe;
+			}
+
+			.token.attr-value,
+			.token.attr-value .token.punctuation {
+				color: #ce9178;
+			}
+
+			.token.attr-value .token.punctuation.attr-equals {
+				color: #d4d4d4;
+			}
+
+			.token.entity {
+				color: #7bb3eb;
+				/*color: #569cd6;*/
+			}
+
+			.token.namespace {
+				color: #4ec9b0;
+			}
+
+			.language-regex .token.anchor {
+				color: #dcdcaa;
+			}
+
+			.language-html .token.punctuation {
+				color: #808080;
+			}
+
+			.token.string, .style .token.string, .token.entity, .token.operator, .token.url {
+				background: none;
+			}
+
+			.token.entity, .token.operator {
+				color: #959290;
+			}
+
+			.token.function, .token.function .token.maybe-class-name {
+				color: #49cfc4;
+			}
+
+			.token.class-name, .token.maybe-class-name {
+				color: #909be5;
+			}
+
+			.token.keyword.not-keyword {
+				color: #b2b2b2;
 			}
 		</style>
 	</head>
@@ -297,12 +543,18 @@
                 ],
                 plugins: [
                     paginationPlugin
-                ]
+                ],
+				toc: {
+					tocMaxLevel: 5,
+					target: 'h2, h3, h4, h5, h6',
+					ignoreHeaders:  ['<!-- {docsify-ignore} -->', '<!-- {docsify-ignore-all} -->']
+				},
             };
 		</script>
 		<!-- Docsify v4 -->
 		<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 		<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+		<script src="/scripts/docsify-plugin-toc.min.js"></script>
 	</body>
 </html>
