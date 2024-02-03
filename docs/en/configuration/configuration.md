@@ -1,52 +1,94 @@
 # Configuration
 
-## Config file(s)
-Config file is optional. By config files, you can change default behavior of metadata and/or transformer.
+[//]: # (## Config file&#40;s&#41;)
 
-There are three ways how to configure **RTTIST**.
+[//]: # (Config file is optional. By config files, you can change default behavior of metadata and/or transformer.)
 
-1. Create file `reflect.config.json`,
-    ```json
-    {
-        "metadata": {
-            "encode": false
-        },
-        "logLevel": "Warning"
-    }
-    ```
-2. or create file `reflect.config.js` with `default` export. 
-    Exported value can be config object directly or Promise resolved to config object.
-   
-    > To use async config (JS config exporting Promise) you have to install package `deasync`, because TS compiler does not allow async operations.
-   
-    ```javascript
-    module.exports.default = {
-        metadata: {
-            encode: false
-        },
-        logLevel: "Warning"
-    };
-    ```
-3. In case you use ttypescript or ts-loader with webpack, you can use tsconfig.json.
-    ```json
-    {
-        "compilerOptions": {
-            // Your options...
-            "plugins": [
-                {
-                    "transform": "tst-reflect-transformer",
-                    // configuration in "reflection" property
-                    "reflection": {
-                        "metadata": {
-                            "encode": false
-                        },
-                        "logLevel": "Warning"
-                    }
-                }
-            ]
-        }
-    }
-    ```
+[//]: # ()
+[//]: # (There are three ways how to configure **RTTIST**.)
+
+[//]: # ()
+[//]: # (1. Create file `reflect.config.json`,)
+
+[//]: # (    ```json)
+
+[//]: # (    {)
+
+[//]: # (        "metadata": {)
+
+[//]: # (            "encode": false)
+
+[//]: # (        },)
+
+[//]: # (        "logLevel": "Warning")
+
+[//]: # (    })
+
+[//]: # (    ```)
+
+[//]: # (2. or create file `reflect.config.js` with `default` export. )
+
+[//]: # (    Exported value can be config object directly or Promise resolved to config object.)
+
+[//]: # (   )
+[//]: # (    > To use async config &#40;JS config exporting Promise&#41; you have to install package `deasync`, because TS compiler does not allow async operations.)
+
+[//]: # (   )
+[//]: # (    ```javascript)
+
+[//]: # (    module.exports.default = {)
+
+[//]: # (        metadata: {)
+
+[//]: # (            encode: false)
+
+[//]: # (        },)
+
+[//]: # (        logLevel: "Warning")
+
+[//]: # (    };)
+
+[//]: # (    ```)
+
+[//]: # (3. In case you use ttypescript or ts-loader with webpack, you can use tsconfig.json.)
+
+[//]: # (    ```json)
+
+[//]: # (    {)
+
+[//]: # (        "compilerOptions": {)
+
+[//]: # (            // Your options...)
+
+[//]: # (            "plugins": [)
+
+[//]: # (                {)
+
+[//]: # (                    "transform": "tst-reflect-transformer",)
+
+[//]: # (                    // configuration in "reflection" property)
+
+[//]: # (                    "reflection": {)
+
+[//]: # (                        "metadata": {)
+
+[//]: # (                            "encode": false)
+
+[//]: # (                        },)
+
+[//]: # (                        "logLevel": "Warning")
+
+[//]: # (                    })
+
+[//]: # (                })
+
+[//]: # (            ])
+
+[//]: # (        })
+
+[//]: # (    })
+
+[//]: # (    ```)
 
 ## Config Options
 ### metadata.include
