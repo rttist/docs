@@ -13,7 +13,7 @@ setPagination(
 RTTIST (pronounced /ˈɑː(r)tɪst/, like artist) is a TypeScript runtime reflection system inspired by the C#'s reflection.
 
 It consists of several parts:
-- [Metadata Generator - TypeGen](/en/typegen.md) - a standalone command-line tool that generates metadata from TypeScript types.
+- [TypeGen - Metadata Generator](/en/typegen.md) - a standalone command-line tool that generates metadata from TypeScript types.
 - [Runtime Library](/en/runtime.md) - a library that provides runtime reflection functionality.
 - [Transformers](/en/transformers/transformers.md) - a set of transformers that extend the functionality of the TypeScript build/bundle tools.
 
@@ -78,9 +78,15 @@ We provide TS to TS compiler (npm: [@rttist/ts-loader-wasm](https://www.npmjs.co
 
 For now, we provide plugins for:
 - esbuild,
-- Vite (work in progress - ~90 %),
-- SWC (work in progress - ~90 %),
+- SWC,
+- Vite,
 - ttypescript (work in progress).
+
+
+## You Should Know
+- TypeGen is a standalone cmd tool that generates metadata type library for static usage, and it is powered by TypeScript compiler API. When you generate metadata, you can simply import the metadata and use it in your project without any additional dependencies. 
+- If you want to use `getType()` function, you have to use one of the transformers. Transformers just transforms `getType()` calls to static reads from metadata library.
+- Using `typeof` operator in `getType<typeof something>()` is not supported by majority of transformers. You can use runtime evaluation `getType(someRuntimeValue)` if the value is class, function or some primitive type. `typeof` is supported only by transformer for TypeScript compiler.
 
 
 ## State of the Docs

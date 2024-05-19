@@ -1,6 +1,8 @@
 - Docs
   - [Introduction](/)
   - [Quick Start](/en/quick-start.md)
+  - [TypeGen](/en/typegen.md)
+  - [RTTIST Runtime](/en/runtime.md)
 - Getting started
   - [Installation](/en/getting-started/installation.md)
   - [Transformers](/en/transformers/transformers.md)
@@ -26,4 +28,6 @@
   - [Config Declaration](/en/configuration/configuration?id=config-declaration)
 - Authoring libraries
   - [Configuration](/en/authoring/configuration?id=configuration)
+- Testing
+  - [Jest](/en/testing/jest.md)
 - Examples

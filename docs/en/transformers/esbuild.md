@@ -38,8 +38,11 @@ esbuild
             Object.keys(packageJson.peerDependencies || {})
         ),
         plugins: [
-            rttistPlugin({ // < 2. Initialize the plugin
+            // < 2. Initialize the plugin
+            rttistPlugin({
+                // Package/project info used to generate type identifiers
                 packageInfo: { name: packageJson.name, rootDir: __dirname },
+                // "rootDir" from tsconfig
                 tsRootDir: path.join(__dirname, 'src'),
             }),
         ],
